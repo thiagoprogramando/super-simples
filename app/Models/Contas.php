@@ -2,25 +2,26 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class Contas extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    protected $table ='contas';
+    
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'conta',
+        'pagar_ao_receber',
+        'pagar_ao_receber_status',
+        'tag',
+        'valor',
+        'data',
+        'status',
+        'user_id',
     ];
 
     /**
@@ -41,10 +42,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function contas()
-    {
-     
-        return $this->hasMany(Contas::class, 'user_id', 'id');
-    }
 }
