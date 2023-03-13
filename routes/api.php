@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\ApiClientesController;
 use App\Http\Controllers\ApiContasController;
+use App\Http\Controllers\ApiLoginController;
 use App\Http\Controllers\ApiRecebiveisController;
+use App\Http\Controllers\ApiTegController;
+use App\Http\Controllers\ApiUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +31,17 @@ Route::get('listRecebiveis/{id}', [ApiRecebiveisController::class, 'listRecebive
 Route::post('addRecebiveis', [ApiRecebiveisController::class, 'addRecebiveis'])->name('addRecebiveis');
 Route::put('upRecebiveis/{id}', [ApiRecebiveisController::class, 'upRecebiveis'])->name('upRecebiveis');
 Route::delete('deleteRecebiveis/{id}', [ApiRecebiveisController::class, 'delete'])->name('deleteRecebiveis');
+
+Route::post('addCliente', [ApiClientesController::class, 'addCliente'])->name('addCliente');
+Route::put('upCliente/{id}', [ApiClientesController::class, 'upCliente'])->name('upCliente');
+Route::delete('deleteCliente/{id}', [ApiClientesController::class, 'deleteCliente'])->name('deleteCliente');
+
+Route::post('addTag', [ApiTegController::class, 'addTag'])->name('addTag');
+Route::delete('DelTag/{id}', [ApiTegController::class, 'DelTag'])->name('DelTag');
+
+Route::get('listUsers', [ApiUserController::class, 'listUsers'])->name('listUsers');
+Route::post('addUsers', [ApiUserController::class, 'addUsers'])->name('addUsers');
+Route::put('upUsers/{id}', [ApiUserController::class, 'upUsers'])->name('upUsers');
+Route::delete('delUsers/{id}', [ApiUserController::class, 'delete'])->name('delUsers');
+
+Route::post('login', [ApiLoginController::class, 'login'])->name('login');
