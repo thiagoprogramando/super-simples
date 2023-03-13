@@ -2,30 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class teg extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    protected $table ='tags';
+    
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'cnpj',
-        'tipo',
-        'id_token',
-        
-
+        'nome',
+        'user_id',
     ];
 
     /**
@@ -46,15 +36,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function contas()
-    {
-     
-        return $this->hasMany(Contas::class, 'user_id', 'id');
-    }
-    public function Recebiveis()
-    {
-     
-        return $this->hasMany(Recebiveis::class, 'user_id', 'id');
-    }
 }

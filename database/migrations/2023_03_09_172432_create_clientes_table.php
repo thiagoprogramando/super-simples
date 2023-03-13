@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('whatsapp');
+            $table->string('whatsapp')->nullable();
             $table->string('cpfcnpj');
-            $table->string('endereco');
-            $table->string('site');
-            $table->string('tag');
+            $table->string('endereco')->nullable();
+            $table->string('site')->nullable();
+            $table->string('tag')->nullable();
             $table->integer('user_id');
             $table->timestamps();
         });

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('id_token')->nullable();
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamps(); 
         });
     }
 
